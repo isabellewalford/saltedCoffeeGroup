@@ -11,7 +11,6 @@ from sustainability.models import PlantOfTheDay
 from sustainability.permissions import ADD_PLANT_OF_THE_DAY
 
 
-@login_required
 def home(request):
     try:
         current_plant = PlantOfTheDay.objects.get(date=timezone.now().date())
