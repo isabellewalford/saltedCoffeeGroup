@@ -34,7 +34,8 @@ class TestPlantOfTheDay(TestCase):
     def test_add_game_master(self):
         self.client.login(username='test_user_admin', password='test_password_admin')
         response = self.client.post(reverse('plant_of_the_day_view'), {'plant': self.plant.pk})
-        self.assertTrue(self.user_admin.has_perm(ADD_PLANT_OF_THE_DAY), msg='Did not assign permission to game master')
+        self.assertIn(self.plant_of_the_day_permission, self.user_admin.user_permissions.all(),
+                      msg='Did not assign permission to game master.')
         self.assertEqual(response.status_code, 302, msg='Did not redirect properly')
         self.assertEqual(PlantOfTheDay.objects.count(), 1, msg='User did not add plant but is a game master')
 

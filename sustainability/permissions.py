@@ -1,6 +1,5 @@
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
-
 from sustainability.models import PlantOfTheDay
 
 ADD_PLANT_OF_THE_DAY = 'add_plant_of_the_day'

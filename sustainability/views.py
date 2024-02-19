@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
+
+import sustainability.permissions
 from sustainability.forms import SignUpForm, PlantOfTheDayForm
 from sustainability.models import PlantOfTheDay
 from sustainability.permissions import ADD_PLANT_OF_THE_DAY
@@ -52,7 +54,7 @@ def signup_view(request):
 
 
 @login_required()
-@permission_required(ADD_PLANT_OF_THE_DAY, raise_exception=True)
+@permission_required('sustainability.add_plant_of_the_day', raise_exception=True)
 def plant_of_the_day_view(request):
     if request.method == 'POST':
         form = PlantOfTheDayForm(request.POST)
