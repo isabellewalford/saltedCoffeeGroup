@@ -43,3 +43,11 @@ def signup_view(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def user_view(request):
+    return render(request, 'user/user.html')
+
+
+def photo_view(request):
+    return render(request, 'user/photo.html')
