@@ -28,6 +28,12 @@
         .navbar li a:hover {
             background-color: #6ea156; 
         }
+
+        .logout {
+            float: right;
+        }
+
+
 </style>
 </head>
 <body>
@@ -36,10 +42,14 @@
         <ul >
             {% if user.is_authenticated %}
                 <li>
-                    <form class action="{% url 'logout' %}" method="post">
+                    <form class="logout" action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Logout</button>
                     </form>
+                    </div>
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'user' %}">User</a>
+                    <a href="{% url 'leaderboard' %}">Leaderboard</a>
                 </li>
                 <li>
                     {% if perms.sustainability.ADD_PLANT_OF_THE_DAY %}

@@ -11,7 +11,7 @@ from sustainability.models import PlantOfTheDay
 from sustainability.permissions import ADD_PLANT_OF_THE_DAY
 
 
-@login_required
+@login_required()
 def home(request):
     try:
         current_plant = PlantOfTheDay.objects.get(date=timezone.now().date())
@@ -71,3 +71,12 @@ def plant_of_the_day_view(request):
         except PlantOfTheDay.DoesNotExist:
             current_plant = "Not selected"
     return render(request, 'sustainability/add_plant_of_the_day.html', {'form': form, 'current_plant': current_plant})
+
+@login_required()
+def account_view(request):
+    return render(request, 'user/user.html')
+
+
+@login_required()
+def leaderboard_view(request):
+    return render(request, 'sustainability/leaderboard.html')
