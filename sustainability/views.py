@@ -74,7 +74,7 @@ def plant_of_the_day_view(request):
 
 @login_required()
 def account_view(request):
-    return render(request, 'user/user.html')
+    return render(request, 'sustainability/user.html')
 
 
 @login_required()
