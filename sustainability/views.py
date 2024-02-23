@@ -8,7 +8,6 @@ from sustainability.forms import PlantOfTheDayForm
 from sustainability.models import PlantOfTheDay
 from sustainability.permissions import ADD_PLANT_OF_THE_DAY
 
-
 @login_required()
 def home(request):
     try:
@@ -16,8 +15,6 @@ def home(request):
     except PlantOfTheDay.DoesNotExist:
         current_plant = None
     return render(request, 'sustainability/index.html', {'current_plant': current_plant})
-
-
 
 @login_required()
 @permission_required('sustainability.add_plant_of_the_day', raise_exception=True)
